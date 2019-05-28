@@ -15,7 +15,18 @@ public class StringsAndThings {
      *           countYZ("day fyyyz"); // Should return 2
      */
     public Integer countYZ(String input){
-        return null;
+
+        Integer count = 0;
+        String[] wordArr = input.split (" ");
+
+        for (int i = 0; i <wordArr.length ; i++) {
+            String word = wordArr[i];
+
+            if(word.substring(word.length() -1).toLowerCase().equals("z") || word.substring(word.length() -1).toLowerCase().equals("y"));
+            count++;
+        }
+
+        return count;
     }
 
     /**
@@ -28,7 +39,11 @@ public class StringsAndThings {
      *           removeString("Hello there", "x") // Should return "Hello there"
      */
     public String removeString(String base, String remove){
-        return null;
+
+        String c = String.valueOf(remove);
+        base = base.replace(c, "");
+
+        return base;
     }
 
     /**
@@ -39,8 +54,25 @@ public class StringsAndThings {
      *           containsEqualNumberOfIsAndNot("This is notnot") // Should return true
      *           containsEqualNumberOfIsAndNot("noisxxnotyynotxisi") // Should return true
      */
-    public Boolean containsEqualNumberOfIsAndNot(String input){
-        return null;
+    public Boolean containsEqualNumberOfIsAndNot(String input) {
+        int isCount = 0;
+        int notCount = 0;
+        String[] wordArr = input.split(" ");
+
+        for (int i = 0; i < wordArr.length; i++) {
+            if (wordArr[i].equals("not")) {
+                notCount++;
+            }
+            if (wordArr[i].equals("is")) {
+                isCount++;
+            }
+        }
+
+        if (isCount == notCount) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -50,9 +82,22 @@ public class StringsAndThings {
      *           gHappy("xxgxx") // Should return  false
      *           gHappy("xxggyygxx") // Should return  false
      */
-    public Boolean gIsHappy(String input){
-        return null;
+    public Boolean gIsHappy(String input) {
+        boolean output = true;
+        //check if there is a g without a g to the left odfdjg;dGJr right
+        String[] wordArr = input.split("");
+        for (int i = 0; i < wordArr.length ; i++) {
+
+            if (wordArr[i].equals("g")) {
+                if (((!wordArr[i - 1].equals("g")) && (!wordArr[i + 1].equals("g")))) {
+                    output = false;
+                    break;
+                }
+            }
+        }
+        return output;
     }
+
 
 
     /**
@@ -63,6 +108,19 @@ public class StringsAndThings {
      *            countTriple("a") // Should return 0
      */
     public Integer countTriple(String input){
-        return null;
+        Integer tripleCounter = 0;
+        String[] wordArr = input.split("");
+        if(wordArr.length >= 3) {
+            for (int i = 1; i < wordArr.length - 1; i++) {
+                String c = wordArr[i];
+                if((c.equals(wordArr[i -1]) && (c.equals((wordArr[i+ 1]))))){
+                    tripleCounter++;
+                }
+
+            }
+        }
+        return tripleCounter;
     }
 }
+
+
